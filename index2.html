@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,113 +23,87 @@
             --cor-rosa-escuro: #ff1493;
             --cor-fundo: #fdf2f8;
         }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
             text-align: center;
             background: radial-gradient(circle at center, #ffffff 0%, #f472b6 100%);
-            
+           
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; /* Evita barras de rolagem por causa dos corações */
-        }
-
-        main.container {
-            position: relative;
-            z-index: 10; /* Mantém o cartão por cima dos corações */
         }
 
         h1 {
             color: var(--cor-rosa);
-            font-size: 2.3rem; /* Aumentado */
-            margin-bottom: 20px;
         }
-
         button {
             background-color: #ff69b4;
             color: white;
             border: none;
-            padding: 14px 28px;
-            font-size: 1.15rem;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-            border-radius: 25px;
+            border-radius: 20px;
         }
-
         button:hover {
             background-color: #ff1493;
         }
-
         .inicio {
             width: 100%;
-            max-width: 520px;
-            min-height: 380px;
-            height: auto;
+            max-width: 400px;
+            height: 300px;
             margin: 0 auto;
             border: 2px solid var(--cor-rosa);
-            padding: 40px;
+            padding: 40px 20px;
             border-radius: 30px;
             background-color: var(--cor-branco);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombras para dar destaque */
-
+            /* Adicione estas linhas: */
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            justify-content: center; /* Centraliza na vertical (meio do cartão) */
+            align-items: center;     /* Centraliza na horizontal */
+            text-align: center;      /* Centraliza o texto */
         }
-
         .surpresa {
-            width: 100%;
             max-width: 400px;
             height: auto;
             border: 2px solid var(--cor-rosa);
-            padding: 40px;
+            padding: 40px 40px;
             border-radius: 30px;
             background-color: var(--cor-branco);
-            display: none; /* Mantém oculto por padrão */
+            display: none;
+            /* Adicione estas linhas: */
+            display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            justify-content: center; /* Centraliza na vertical (meio do cartão) */
+            align-items: center;     /* Centraliza na horizontal */
+            text-align: center;      /* Centraliza o texto */
         }
-
-        /* --- TAMANHO DOS PARÁGRAFOS --- */
-        p {
-            font-size: 1.25rem; /* Aumentado o texto da mensagem */
-            line-height: 1.6;    /* Melhora a leitura entre as linhas */
-            color: #333;
-            margin: 10px 0;
-        }
-
         .inicio p {
-            font-size: 2.1rem;
+            font-size: 1.8rem;
             color: var(--cor-preto);
         }
-
         .surpresa button {
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             display: block;
             margin-right: auto;
-            margin-bottom: 10px;
         }
-
+        .carta button {
+            font-size: 2rem;
+            background-color: var(--cor-branco);
+            border-radius: 20px;
+        }
         .btn-carta {
-            font-size: 4.5rem;
+            font-size: 3rem;
             background: transparent;
             border: none;
             padding: 0;
             cursor: pointer;
             outline: none;
         }
-
-        .btn-carta:hover {
-            transform: scale(1.15); /* Efeito suave ao passar o mouse */
-        }
-
         .heart-bg {
             position: fixed;
             bottom: -30px;
@@ -154,31 +128,27 @@
                 transform: translateY(-105vh);
                 opacity: 0;
             }
-        }
+}
     </style>
 </head>
 <body>
-
     <main class="container">
         <div id="card-inicio" class="inicio">
             <h1>Minha Galeguinha🤍</h1>
             <button onclick="carta()">Clique para descobrir a surpresa!</button>
         </div>
-
         <div id="carta" class="inicio" style="display: none;">
             <button onclick="abrirSurpresa()" class="btn-carta">💌</button>
             <p>Quase laaaa, meu amorrr!</p>
         </div>
-
         <div id="card-surpresa" class="surpresa" style="display: none;">
             <button onclick="fecharSurpresa()">Voltar</button>
             <h1>Surpresa!</h1>
-            <p><i><b>Eu te AMOOOO</b>, meu neném, estou morrendo de saudades de você</i></p> 
+            <p><b>Eu te AMOOOO</b>, meu neném, estou morrendo de saudades de você</p> 
             <p>você é tudo para mim, não aguento mais ficar longe de você</p> 
             <p>eu vim pra bahia, mas meu coração continua com você, já estou contando os dias pra te ver de novoo!</p>
         </div>
     </main>
-
 <script>
     function carta() {
         document.getElementById("card-inicio").style.display = "none";
@@ -194,8 +164,7 @@
         document.getElementById("card-surpresa").style.display = "none";
         document.getElementById("card-inicio").style.display = "flex";
     }
-
-    // Função de fundo separada corretamente
+     // Função de fundo separada corretamente
     function gerarCoracoesFundo() {
         const coracao = document.createElement('div');
         coracao.classList.add('heart-bg');
