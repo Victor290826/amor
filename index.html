@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amor</title>
+    <style>
+        :root {
+            --cor-preto: #000000;
+            --cor-branco: #ffffff;
+            --cor-rosa: #ff69b4;
+            --cor-amarelo: #ffff00;
+            --cor-azul: #0000ff;
+            --cor-verde: #00ff00;
+            --cor-laranja: #ffa500;
+            --cor-roxo: #800080;
+            --cor-vermelho: #ff0000;
+            --cor-cinza: #808080;
+            --cor-marrom: #a52a2a;
+            --cor-rosa-claro: #ffb6c1;
+            --cor-azul-claro: #add8e6;
+            --cor-verde-claro: #90ee90;
+            --cor-rosa-escuro: #ff1493;
+            --cor-fundo: #fdf2f8;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            background: radial-gradient(circle at center, #ffffff 0%, #f472b6 100%);
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: var(--cor-rosa);
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .inicio {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            border: 2px solid var(--cor-rosa);
+            padding: 40px 20px;
+            border-radius: 30px;
+            background-color: var(--cor-branco);
+            /* Adicione estas linhas: */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza na vertical (meio do cartão) */
+            align-items: center;     /* Centraliza na horizontal */
+            text-align: center;      /* Centraliza o texto */
+        }
+        .surpresa {
+            max-width: 400px;
+            height: auto;
+            border: 2px solid var(--cor-rosa);
+            padding: 40px 40px;
+            border-radius: 30px;
+            background-color: var(--cor-branco);
+            display: none;
+            /* Adicione estas linhas: */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza na vertical (meio do cartão) */
+            align-items: center;     /* Centraliza na horizontal */
+            text-align: center;      /* Centraliza o texto */
+        }
+        .inicio p {
+            font-size: 1.8rem;
+            color: var(--cor-preto);
+        }
+        .surpresa button {
+            font-size: 1.0rem;
+            display: block;
+            margin-right: auto;
+        }
+        .carta button {
+            font-size: 2rem;
+            background-color: var(--cor-branco);
+            border-radius: 20px;
+        }
+        .btn-carta {
+            font-size: 3rem;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+        }
+        .heart-bg {
+            position: fixed;
+            bottom: -30px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+            animation: subirCoracao linear forwards;
+        }
+
+        @keyframes subirCoracao {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-105vh);
+                opacity: 0;
+            }
+}
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div id="card-inicio" class="inicio">
+            <h1>Minha Galeguinha🤍</h1>
+            <button onclick="carta()">Clique para descobrir a surpresa!</button>
+        </div>
+        <div id="carta" class="inicio" style="display: none;">
+            <button onclick="abrirSurpresa()" class="btn-carta">💌</button>
+            <p>Quase laaaa, meu amorrr!</p>
+        </div>
+        <div id="card-surpresa" class="surpresa" style="display: none;">
+            <button onclick="fecharSurpresa()">Voltar</button>
+            <h1>Surpresa!</h1>
+            <p><b>Eu te AMOOOO</b>, meu neném, estou morrendo de saudades de você</p> 
+            <p>você é tudo para mim, não aguento mais ficar longe de você</p> 
+            <p>eu vim pra bahia, mas meu coração continua com você, já estou contando os dias pra te ver de novoo!</p>
+        </div>
+    </main>
+<script>
+    function carta() {
+        document.getElementById("card-inicio").style.display = "none";
+        document.getElementById("carta").style.display = "flex";
+    }
+
+    function abrirSurpresa() {
+        document.getElementById("carta").style.display = "none";
+        document.getElementById("card-surpresa").style.display = "flex";
+    }
+
+    function fecharSurpresa() {
+        document.getElementById("card-surpresa").style.display = "none";
+        document.getElementById("card-inicio").style.display = "flex";
+    }
+    function gerarChuvaCoracoes() {
+    for(let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const coracao = document.createElement('div');
+            coracao.classList.add('coracao-flutuante');
+            coracao.innerText = '❤️';
+            coracao.style.left = Math.random() * 100 + 'vw';
+            coracao.style.bottom = '0px';
+            document.body.appendChild(coracao);
+            
+            setTimeout(() => coracao.remove(), 3000);
+        }, i * 100);
+    }
+    function gerarCoracoesFundo() {
+        const coracao = document.createElement('div');
+        coracao.classList.add('heart-bg');
+        coracao.innerText = '❤️️';
+    
+        // Posição horizontal aleatória (0% a 100% da largura da tela)
+        coracao.style.left = Math.random() * 100 + 'vw';
+    
+        // Tamanho e duração aleatórios para um efeito mais natural
+        const duracao = Math.random() * 3 + 4; // entre 4s e 7s
+        coracao.style.animationDuration = duracao + 's';
+        coracao.style.fontSize = (Math.random() * 15 + 15) + 'px';
+
+        document.body.appendChild(coracao);
+
+        // Remove o coração do código após terminar a animação
+        setTimeout(() => {
+            coracao.remove();
+        }, duracao * 1000);
+    }
+
+    // Cria um novo coração a cada 500 milissegundos
+    setInterval(gerarCoracoesFundo, 500);
+    }
+</script>
+</body>
+</html>
